@@ -3,33 +3,32 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ShoppingCart } from 'lucide-react';
 import { useCart } from '../context/CartContext';
-import pouletImg from '../assets/products/poulet-entier.jpeg';
+import pouletEntierImg from '../assets/products/poulet-entier.jpeg';
 import decoupeImg from '../assets/products/decoupe.jpeg';
-import fraisImg from '../assets/products/frais-emballes.png';
 
 const products = [
   {
     id: '1',
-    name: 'Poulet entier frais',
-    price: 3500,
-    image: pouletImg,
-    category: 'Volailles',
-    available: true
-  },
-  {
-    id: '2',
-    name: 'Découpe de volaille',
-    price: 2500,
-    image: decoupeImg,
-    category: 'Volailles',
+    name: 'Poulet entier',
+    price: 2600,
+    image: pouletEntierImg,
+    category: 'Poulets',
     available: true
   },
   {
     id: '3',
-    name: 'Produits frais emballés',
-    price: 4500,
-    image: fraisImg,
-    category: 'Frais',
+    name: 'Cuisse de poulet',
+    price: 2200,
+    image: decoupeImg,
+    category: 'Découpes',
+    available: true
+  },
+  {
+    id: '6',
+    name: 'Saucisse',
+    price: 1000,
+    image: decoupeImg,
+    category: 'Charcuteries',
     available: true
   }
 ];

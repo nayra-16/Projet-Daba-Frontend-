@@ -39,7 +39,7 @@ const Services: React.FC = () => {
   return (
     <div className="bg-white">
       {/* Hero Header */}
-      <section className="bg-brand-blue py-20 text-white">
+      <section className="bg-brand-green py-20 text-white">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">Nos Services</h1>
           <p className="text-xl max-w-3xl mx-auto opacity-90">

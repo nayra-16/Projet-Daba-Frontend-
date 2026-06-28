@@ -49,7 +49,7 @@ const Products: React.FC = () => {
   return (
     <div className="bg-brand-light min-h-screen pb-20">
       {/* Header */}
-      <section className="bg-brand-blue py-16 text-white mb-12">
+      <section className="bg-brand-green py-16 text-white mb-12">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl font-bold mb-4">Notre Catalogue</h1>
           <p className="text-lg opacity-80">Découvrez nos produits frais et transformés de qualité supérieure.</p>

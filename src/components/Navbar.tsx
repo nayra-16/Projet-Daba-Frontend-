@@ -27,7 +27,7 @@ const Navbar: React.FC = () => {
     <nav
       className={cn(
         'w-full z-50 transition-all duration-300',
-        isSticky ? 'fixed top-0 bg-white shadow-md py-2' : 'relative bg-white py-4'
+        isSticky ? 'fixed top-0 bg-white shadow-md py-4' : 'relative bg-white py-6'
       )}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
@@ -36,17 +36,16 @@ const Navbar: React.FC = () => {
           <img 
             src="/src/assets/logos/logo.png" 
             alt="DABA Logo" 
-            className="w-12 h-12 object-contain"
+            className="w-[70px] h-[70px] md:w-[90px] lg:w-[110px] object-contain"
             onError={(e) => {
               // Fallback if image doesn't exist yet
               (e.target as HTMLImageElement).style.display = 'none';
               (e.target as HTMLImageElement).nextElementSibling?.classList.remove('hidden');
             }}
           />
-          <div className="hidden w-12 h-12 bg-brand-green rounded-full flex items-center justify-center text-white font-bold text-xl">
+          <div className="hidden w-[70px] h-[70px] md:w-[90px] lg:w-[110px] bg-brand-green rounded-full flex items-center justify-center text-white font-bold text-2xl">
             D
           </div>
-          <span className="ml-2 text-2xl font-bold text-brand-blue">DABA</span>
         </Link>
 
         {/* Desktop Menu */}

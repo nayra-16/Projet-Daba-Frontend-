@@ -7,6 +7,11 @@ export const COLORS = {
   light: '#F8F8F8',
 };
 
+export const COMPANY_INFO = {
+  name: 'DABA SAS',
+  slogan: 'Le goût du terroir',
+};
+
 export const MENU_LINKS = [
   { name: 'Accueil', path: '/' },
   { name: 'À propos', path: '/about' },
@@ -17,10 +22,11 @@ export const MENU_LINKS = [
 ];
 
 export const CONTACT_INFO = {
-  phone: '+228 90 00 00 00',
-  email: 'contact@daba-togo.com',
-  address: 'Lomé, Togo',
-  hours: 'Lun - Sam: 08:00 - 18:00',
+  phone: '+228 93 49 42 26',
+  whatsapp: '+228 93 49 42 26',
+  email: 'info@daba.tg',
+  address: 'Agoè BKS Immeuble D&D, Togo',
+  hours: '08h30 - 20h00',
 };
 
 export const SOCIAL_LINKS = [
