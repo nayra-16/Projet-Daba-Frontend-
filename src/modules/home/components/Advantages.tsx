@@ -32,7 +32,7 @@ const Advantages: React.FC = () => {
           {advantages.map((adv, index) => (
             <div
               key={index}
-              className={`${adv.color} py-8 px-6 flex flex-col items-center text-center border-r border-white/10 last:border-0 hover:bg-brand-green transition-colors duration-300`}
+              className={`${adv.color} py-8 px-6 flex flex-col items-center text-center border-b md:border-b-0 md:border-r border-white/10 last:border-b-0 md:last:border-r-0 hover:bg-brand-green transition-colors duration-300`}
             >
               <div className="mb-4">{adv.icon}</div>
               <h3 className="text-white font-bold text-lg">{adv.title}</h3>

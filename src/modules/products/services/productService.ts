@@ -1,6 +1,6 @@
 import api from '../../../core/services/api';
 import { Product, Category } from '../types';
-import pouletEntierImg from '../assets/poulet-entier.jpeg';
+import pouletEntierImg from '../assets/poulet-entier.webp';
 import pouletFumeImg from '../assets/poulet-fume.jpeg';
 import cuissePouletImg from '../assets/cuisse-poulet.jpeg';
 import ailesPouletImg from '../assets/ailes-poulet.jpeg';
@@ -19,256 +19,106 @@ import brochettesBlancImg from '../assets/Brochettes de blanc.jpeg';
 import brochettesGesiersImg from '../assets/Brochettes de gésiers.jpeg';
 import pouletPaneImg from '../assets/Poulet-pané.jpeg';
 import gesiersImg from '../assets/gésiers.jpeg';
-import decoupeImg from '../assets/decoupe.jpeg';
-
-export const productService = {
-  getAllProducts: async (): Promise<Product[]> => {
-    // For now, return mock data since we don't have a backend yet
-    // return (await api.get('/products')).data;
-    return MOCK_PRODUCTS;
-  },
-  getProductById: async (id: string): Promise<Product> => {
-    // return (await api.get(`/products/${id}`)).data;
-    return MOCK_PRODUCTS.find(p => p.id === id) || MOCK_PRODUCTS[0];
-  },
-  getCategories: async (): Promise<Category[]> => {
-    // return (await api.get('/categories')).data;
-    return MOCK_CATEGORIES;
-  }
-};
+import decoupeImg from '../assets/decoupe.webp';
 
 const MOCK_CATEGORIES: Category[] = [
-  { id: '1', name: 'Poulets', slug: 'poulets' },
-  { id: '2', name: 'Découpes', slug: 'decoupes' },
-  { id: '3', name: 'Charcuteries', slug: 'charcuteries' },
-  { id: '4', name: 'Produits marinés', slug: 'produits-marines' },
-  { id: '5', name: 'Produits transformés', slug: 'produits-transformes' },
+  { id: 'poulets', name: 'Poulets', slug: 'poulets' },
+  { id: 'decoupes', name: 'Découpes', slug: 'decoupes' },
+  { id: 'charcuteries', name: 'Charcuteries', slug: 'charcuteries' },
+  { id: 'marines', name: 'Produits marinés', slug: 'produits-marines' },
+  { id: 'transformes', name: 'Produits transformés', slug: 'produits-transformes' }
 ];
 
 const MOCK_PRODUCTS: Product[] = [
   // Poulets
-  {
-    id: '1',
-    name: 'Poulet entier',
-    description: 'Poulet entier frais de qualité supérieure.',
-    price: 2600,
-    image: pouletEntierImg,
-    category: '1',
-    availability: true,
-    unit: 'Sachet'
-  },
-  {
-    id: '2',
-    name: 'Poulet fumé',
-    description: 'Poulet entier fumé selon un procédé traditionnel.',
-    price: 3400,
-    image: pouletFumeImg,
-    category: '1',
-    availability: true,
-    unit: 'Sachet'
-  },
+  { id: 'p1', name: 'Poulet Entier', description: 'Poulet frais, élevé en plein air. Poids moyen 1.2kg - 1.5kg.', price: 2500, image: pouletEntierImg, category: 'poulets', availability: true, unit: 'Kg' },
+  { id: 'p5', name: 'Poulet Fumé Entier', description: 'Poulet entier fumé traditionnellement au bois de hêtre.', price: 3500, image: pouletFumeImg, category: 'poulets', availability: true, unit: 'Pièce' },
+  
   // Découpes
-  {
-    id: '3',
-    name: 'Cuisse de poulet',
-    description: '3 à 4 cuisses par sachet.',
-    price: 2200,
-    image: cuissePouletImg,
-    category: '2',
-    availability: true,
-    unit: 'Sachet'
-  },
-  {
-    id: '4',
-    name: 'Ailes de poulet',
-    description: '10 à 15 ailes par sachet.',
-    price: 2000,
-    image: ailesPouletImg,
-    category: '2',
-    availability: true,
-    unit: 'Sachet'
-  },
-  {
-    id: '5',
-    name: 'Blanc de poulet',
-    description: 'Tranches de poitrine de poulet sans os.',
-    price: 6000,
-    image: blancPouletImg,
-    category: '2',
-    availability: true,
-    unit: 'Sachet'
-  },
+  { id: 'p2', name: 'Cuisse de Poulet', description: 'Cuisses de poulet charnues et tendres. Idéales pour le four ou le barbecue.', price: 2800, image: cuissePouletImg, category: 'decoupes', availability: true, unit: 'Kg' },
+  { id: 'p3', name: 'Ailes de Poulet', description: 'Ailes de poulet fraîches. Parfaites pour vos apéritifs et grillades.', price: 2200, image: ailesPouletImg, category: 'decoupes', availability: true, unit: 'Kg' },
+  { id: 'p4', name: 'Blanc de Poulet', description: 'Filets de poulet sans os ni peau, très tendres.', price: 3500, image: blancPouletImg, category: 'decoupes', availability: true, unit: 'Kg' },
+  { id: 'p20', name: 'Gésiers de Volaille', description: 'Gésiers frais nettoyés.', price: 1800, image: gesiersImg, category: 'decoupes', availability: true, unit: 'Kg' },
+  
   // Charcuteries
-  {
-    id: '6',
-    name: 'Saucisse',
-    description: '10 unités par paquet.',
-    price: 1000,
-    image: saucisseFumeeImg,
-    category: '3',
-    availability: true,
-    unit: 'Sachet'
-  },
-  {
-    id: '7',
-    name: 'Saucisse fumée',
-    description: '10 unités par paquet.',
-    price: 1000,
-    image: saucisseFumeeImg,
-    category: '3',
-    availability: true,
-    unit: 'Sachet'
-  },
-  {
-    id: '8',
-    name: 'Pâté de foie',
-    description: 'Boîte de 200 g.',
-    price: 1000,
-    image: pateFoieImg,
-    category: '3',
-    availability: true,
-    unit: 'Boîte'
-  },
-  {
-    id: '9',
-    name: 'Merguez',
-    description: '500 grammes.',
-    price: 6000,
-    image: merguezImg,
-    category: '3',
-    availability: true,
-    unit: 'kg'
-  },
-  {
-    id: '10',
-    name: 'Chipolatas',
-    description: '500 grammes.',
-    price: 6000,
-    image: chipolatasImg,
-    category: '3',
-    availability: true,
-    unit: 'kg'
-  },
-  {
-    id: '11',
-    name: 'Saucisses cuites',
-    description: '410 g.',
-    price: 1000,
-    image: saucisseFumeeImg,
-    category: '3',
-    availability: true,
-    unit: 'Paquet'
-  },
-  {
-    id: '12',
-    name: 'Saucissons',
-    description: 'Saucisson sec de qualité.',
-    price: 2000,
-    image: saucissonImg,
-    category: '3',
-    availability: true,
-    unit: 'Pièce'
-  },
-  {
-    id: '13',
-    name: 'Saucisse à griller nature',
-    description: 'Paquet de saucisses à griller nature.',
-    price: 2000,
-    image: saucisseGrillerNatureImg,
-    category: '3',
-    availability: true,
-    unit: 'Paquet'
-  },
-  {
-    id: '14',
-    name: 'Saucisse à griller aux fines herbes',
-    description: 'Paquet de saucisses à griller aux fines herbes.',
-    price: 2000,
-    image: saucisseGrillerNatureImg,
-    category: '3',
-    availability: true,
-    unit: 'Paquet'
-  },
-  {
-    id: '15',
-    name: 'Saucisse à griller au curry',
-    description: 'Paquet de saucisses à griller au curry.',
-    price: 2000,
-    image: saucisseGrillerNatureImg,
-    category: '3',
-    availability: true,
-    unit: 'Paquet'
-  },
+  { id: 'p7', name: 'Merguez de Volaille', description: 'Merguez 100% volaille, épicées juste ce qu\'il faut.', price: 3000, image: merguezImg, category: 'charcuteries', availability: true, unit: 'Kg' },
+  { id: 'p8', name: 'Chipolatas', description: 'Saucisses fines de volaille aux herbes.', price: 3000, image: chipolatasImg, category: 'charcuteries', availability: true, unit: 'Kg' },
+  { id: 'p9', name: 'Saucisse à Griller Nature', description: 'Saucisses de volaille nature pour barbecue.', price: 2800, image: saucisseGrillerNatureImg, category: 'charcuteries', availability: true, unit: 'Kg' },
+  { id: 'p10', name: 'Saucisse Fumée', description: 'Saucisses de volaille légèrement fumées.', price: 3200, image: saucisseFumeeImg, category: 'charcuteries', availability: true, unit: 'Kg' },
+  { id: 'p11', name: 'Saucisson de Volaille', description: 'Saucisson sec 100% volaille, idéal pour l\'apéritif.', price: 2500, image: saucissonImg, category: 'charcuteries', availability: true, unit: 'Pièce' },
+  { id: 'p12', name: 'Pâté de Foie', description: 'Pâté onctueux au foie de volaille.', price: 1500, image: pateFoieImg, category: 'charcuteries', availability: true, unit: 'Boîte' },
+  
   // Produits marinés
-  {
-    id: '16',
-    name: 'Cuisses marinées',
-    description: 'Cuisses de poulet marinées prêtes à cuisiner.',
-    price: 5500,
-    image: cuissesMarineesImg,
-    category: '4',
-    availability: true,
-    unit: 'kg'
-  },
-  {
-    id: '17',
-    name: 'Haut de cuisses',
-    description: 'Hauts de cuisses de poulet marinés.',
-    price: 5500,
-    image: hautCuissesImg,
-    category: '4',
-    availability: true,
-    unit: 'kg'
-  },
-  {
-    id: '18',
-    name: 'Pilon mariné',
-    description: 'Pilons de poulet marinés.',
-    price: 5500,
-    image: pilonMarineImg,
-    category: '4',
-    availability: true,
-    unit: 'kg'
-  },
-  {
-    id: '19',
-    name: 'Ailes marinées',
-    description: 'Ailes de poulet marinées.',
-    price: 4500,
-    image: ailesMarineesImg,
-    category: '4',
-    availability: true,
-    unit: 'kg'
-  },
-  {
-    id: '20',
-    name: 'Brochettes de blanc',
-    description: 'Brochettes de blanc de poulet mariné.',
-    price: 7500,
-    image: brochettesBlancImg,
-    category: '4',
-    availability: true,
-    unit: 'kg'
-  },
-  {
-    id: '21',
-    name: 'Brochettes de gésiers',
-    description: 'Brochettes de gésiers de poulet marinés.',
-    price: 5000,
-    image: brochettesGesiersImg,
-    category: '4',
-    availability: true,
-    unit: 'kg'
-  },
+  { id: 'p13', name: 'Cuisses Marinées', description: 'Cuisses de poulet marinées aux épices douces.', price: 3200, image: cuissesMarineesImg, category: 'marines', availability: true, unit: 'Kg' },
+  { id: 'p14', name: 'Ailes Marinées', description: 'Ailes de poulet marinées façon BBQ.', price: 2800, image: ailesMarineesImg, category: 'marines', availability: true, unit: 'Kg' },
+  { id: 'p15', name: 'Pilons Marinés', description: 'Pilons de poulet tendres avec une marinade spéciale.', price: 3000, image: pilonMarineImg, category: 'marines', availability: true, unit: 'Kg' },
+  { id: 'p16', name: 'Brochettes de Blanc', description: 'Brochettes de filet de poulet prêtes à griller.', price: 3800, image: brochettesBlancImg, category: 'marines', availability: true, unit: 'Kg' },
+  { id: 'p17', name: 'Brochettes de Gésiers', description: 'Brochettes savoureuses de gésiers de volaille.', price: 2500, image: brochettesGesiersImg, category: 'marines', availability: true, unit: 'Kg' },
+  { id: 'p18', name: 'Haut de Cuisses', description: 'Hauts de cuisses charnus avec leur marinade maison.', price: 3000, image: hautCuissesImg, category: 'marines', availability: true, unit: 'Kg' },
+  
   // Produits transformés
-  {
-    id: '22',
-    name: 'Poulet pané',
-    description: 'Poulet pané prêt à cuisiner.',
-    price: 2000,
-    image: pouletPaneImg,
-    category: '5',
-    availability: true,
-    unit: 'Paquet'
-  }
+  { id: 'p19', name: 'Poulet Pané', description: 'Morceaux de poulet tendres avec une panure croustillante.', price: 4000, image: pouletPaneImg, category: 'transformes', availability: true, unit: 'Kg' }
 ];
+
+export const productService = {
+  getAllProducts: async (): Promise<Product[]> => {
+    try {
+      const response = await api.get('/products');
+      const data = response.data;
+      
+      let backendProducts: Product[] = [];
+      if (data?.data && Array.isArray(data.data)) {
+        backendProducts = data.data.map(mapBackendToFrontendProduct);
+      } else if (Array.isArray(data)) {
+        backendProducts = data.map(mapBackendToFrontendProduct);
+      }
+      
+      if (backendProducts.length > 0) {
+        return backendProducts;
+      }
+      
+      // Fallback si l'API est vide
+      return MOCK_PRODUCTS;
+    } catch (error) {
+      console.error('Error fetching products, falling back to mocks:', error);
+      return MOCK_PRODUCTS;
+    }
+  },
+  getProductById: async (id: string): Promise<Product> => {
+    try {
+      const response = await api.get(`/products/${id}`);
+      const data = response.data?.data || response.data;
+      return mapBackendToFrontendProduct(data);
+    } catch (error) {
+      console.error(`Error fetching product ${id}, falling back to mock:`, error);
+      const mockProd = MOCK_PRODUCTS.find(p => p.id === id);
+      if (mockProd) return mockProd;
+      throw error;
+    }
+  },
+  getCategories: async (): Promise<Category[]> => {
+    try {
+      const response = await api.get('/categories');
+      const data = response.data;
+      if (data?.data && Array.isArray(data.data) && data.data.length > 0) {
+         return data.data; // simplifions
+      }
+      return MOCK_CATEGORIES;
+    } catch (error) {
+      return MOCK_CATEGORIES;
+    }
+  }
+};
+
+function mapBackendToFrontendProduct(raw: any): Product {
+  return {
+    id: String(raw.id),
+    name: raw.name || 'Produit inconnu',
+    description: raw.description || '',
+    price: Number(raw.price || 0),
+    image: '', // No image support in backend yet
+    category: '1',
+    availability: Number(raw.stock || 0) > 0,
+    unit: 'Unité'
+  };
+}

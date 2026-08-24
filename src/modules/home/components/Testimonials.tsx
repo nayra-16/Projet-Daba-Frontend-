@@ -34,12 +34,12 @@ const Testimonials: React.FC = () => {
   const prev = () => setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
 
   return (
-    <section className="py-24 bg-white">
+    <section className="py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
-          <div className="w-full lg:w-1/3">
-            <h2 className="text-4xl font-bold text-brand-blue mb-6">Ce que les clients disent de nous</h2>
-            <div className="flex gap-4">
+        <div className="flex flex-col lg:flex-row gap-12 md:gap-16 items-center">
+          <div className="w-full lg:w-1/3 text-center lg:text-left">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-blue mb-6">Ce que les clients disent de nous</h2>
+            <div className="flex gap-4 justify-center lg:justify-start">
               <button
                 onClick={prev}
                 className="w-12 h-12 rounded-full border-2 border-brand-green text-brand-green flex items-center justify-center hover:bg-brand-green hover:text-white transition-all"
@@ -54,15 +54,15 @@ const Testimonials: React.FC = () => {
               </button>
             </div>
             <div className="mt-8">
-              <Link to="/contact" className="bg-brand-green text-white px-8 py-3 rounded-md font-bold hover:bg-opacity-90 transition-all inline-block">
+              <Link to="/contact" className="bg-brand-green text-white px-8 py-3 rounded-md font-bold hover:bg-opacity-90 transition-all inline-block w-full sm:w-auto">
                 En savoir plus →
               </Link>
             </div>
           </div>
 
           <div className="w-full lg:w-2/3">
-            <div className="relative bg-brand-light rounded-3xl p-12 shadow-inner">
-              <Quote className="absolute top-8 left-8 text-brand-green opacity-20" size={64} />
+            <div className="relative bg-brand-light rounded-3xl p-6 sm:p-8 md:p-12 shadow-inner mt-8 lg:mt-0">
+              <Quote className="absolute top-4 left-4 md:top-8 md:left-8 text-brand-green opacity-20" size={64} />
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentIndex}
@@ -72,7 +72,7 @@ const Testimonials: React.FC = () => {
                   transition={{ duration: 0.4 }}
                   className="relative z-10"
                 >
-                  <div className="flex gap-1 mb-6">
+                  <div className="flex gap-1 mb-4 md:mb-6">
                     {[...Array(5)].map((_, i) => (
                       <Star
                         key={i}
@@ -81,16 +81,16 @@ const Testimonials: React.FC = () => {
                       />
                     ))}
                   </div>
-                  <p className="text-2xl italic text-brand-text mb-8 leading-relaxed">
+                  <p className="text-lg md:text-2xl italic text-brand-text mb-6 md:mb-8 leading-relaxed">
                     "{testimonials[currentIndex].comment}"
                   </p>
                   <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 bg-brand-green rounded-full flex items-center justify-center text-white font-bold text-2xl">
+                    <div className="w-12 h-12 md:w-16 md:h-16 bg-brand-green rounded-full flex items-center justify-center text-white font-bold text-xl md:text-2xl flex-shrink-0">
                       {testimonials[currentIndex].name.charAt(0)}
                     </div>
                     <div>
-                      <h4 className="font-bold text-xl text-brand-blue">{testimonials[currentIndex].name}</h4>
-                      <p className="text-gray-500">{testimonials[currentIndex].role}</p>
+                      <h4 className="font-bold text-lg md:text-xl text-brand-blue leading-tight">{testimonials[currentIndex].name}</h4>
+                      <p className="text-gray-500 text-sm md:text-base">{testimonials[currentIndex].role}</p>
                     </div>
                   </div>
                 </motion.div>

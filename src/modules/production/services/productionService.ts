@@ -10,8 +10,13 @@ import {
   PackagingDetails,
   QualityDetails,
   ProductionHistoryEvent,
+  ProductionOrder,
+  ProductionRecipe,
+  ProductionLoss,
+  NonConformity,
+  ChambreFroide,
 } from '../types';
-import { ProductionDashboardStats, MOCK_PRODUCTION_DASHBOARD } from '../mocks/productionDashboard.mock';
+import { ProductionDashboardDTO } from '../../../core/types/api';
 
 // ============================================================
 // Enum mapping: Backend status → Frontend ProductionStep
@@ -99,6 +104,11 @@ function mapLot(raw: any): ProductionLot {
     processingDetails: raw.processing ? mapProcessingDetails(raw.processing) : undefined,
     packagingDetails: raw.packaging ? mapPackagingDetails(raw.packaging) : undefined,
     qualityDetails: raw.qualityCheck ? mapQualityDetails(raw.qualityCheck) : undefined,
+    chambreFroideId: raw.chambreFroideId ?? undefined,
+    dlc: raw.dlc ? toIsoDate(raw.dlc) : undefined,
+    perteReason: raw.perteReason ?? undefined,
+    perteIncidentId: raw.perteIncidentId ?? undefined,
+    perteDate: raw.perteDate ? toIsoDate(raw.perteDate) : undefined,
   } as any;
 }
 
@@ -196,48 +206,108 @@ function mapFinishedProduct(raw: any): FinishedProduct {
 // Service API
 // ============================================================
 export const productionService = {
-  async getDashboard(): Promise<ProductionDashboardStats> {
+  async getDashboard(): Promise<ProductionDashboardDTO> {
+    const defaultStats: ProductionDashboardDTO = {
+      lotsEnCours: 0,
+      poidsTraite: 0,
+      produitsFinis: 0,
+      rendementMoyen: 0,
+      controlesReussis: 0,
+      rejets: 0,
+    };
+
     try {
       const resp = await axiosInstance.get('/production/dashboard/stats');
       const data = unwrap<any>(resp);
       if (!data) {
-        return MOCK_PRODUCTION_DASHBOARD;
+        return defaultStats;
       }
-      // Merge with mock defaults for chart fallback fields
       return {
-        ...MOCK_PRODUCTION_DASHBOARD,
-        receivedToday: Number(data.receivedToday ?? 0),
-        waitingLots: Number(data.waitingLots ?? 0),
-        inSlaughter: Number(data.inSlaughter ?? 0),
-        inCutting: Number(data.inCutting ?? 0),
-        inProcessing: Number(data.inProcessing ?? 0),
-        inPackaging: Number(data.inPackaging ?? 0),
-        inQualityCheck: Number(data.inQualityCheck ?? 0),
-        finishedProducts: Number(data.finishedProducts ?? 0),
-        rejectedProducts: Number(data.rejectedProducts ?? 0),
-        dailyProductionKg: Number(data.dailyProductionKg ?? 0),
-        monthlyProductionKg: Number(data.monthlyProductionKg ?? 0),
-        averageProductionTimeHours: Number(data.averageProductionTimeHours ?? 4.8),
-        dailyProduction: data.dailyProduction || MOCK_PRODUCTION_DASHBOARD.dailyProduction,
-        monthlyProduction: data.monthlyProduction || MOCK_PRODUCTION_DASHBOARD.monthlyProduction,
-        productDistribution: data.productDistribution || MOCK_PRODUCTION_DASHBOARD.productDistribution,
-        averageTimePerStep: data.averageTimePerStep || MOCK_PRODUCTION_DASHBOARD.averageTimePerStep,
-        yieldRate: data.yieldRate || MOCK_PRODUCTION_DASHBOARD.yieldRate,
+        lotsEnCours: Number(data.lotsEnCours ?? 0),
+        poidsTraite: Number(data.poidsTraite ?? 0),
+        produitsFinis: Number(data.produitsFinis ?? 0),
+        rendementMoyen: Number(data.rendementMoyen ?? 0),
+        controlesReussis: Number(data.controlesReussis ?? 0),
+        rejets: Number(data.rejets ?? 0),
       };
     } catch (err) {
       console.error('[productionService] getDashboard error:', err);
-      return MOCK_PRODUCTION_DASHBOARD;
+      return defaultStats;
     }
+  },
+
+  async getChambresFroides(): Promise<ChambreFroide[]> {
+    const raw = localStorage.getItem('daba_chambres_froides');
+    if (raw) {
+      return JSON.parse(raw);
+    }
+    const mockChambres: ChambreFroide[] = [
+      { id: '1', name: 'CF-01 (Matières premières)', capacityUnit: 'kg', minTemp: 2, maxTemp: 5, currentTemp: 3, status: 'Disponible', capacity: 1000, currentLoad: 800 },
+      { id: '2', name: 'CF-02 (Produits finis)', capacityUnit: 'kg', minTemp: -20, maxTemp: -18, currentTemp: -18, status: 'Occupée', capacity: 1500, currentLoad: 1450 },
+      { id: '3', name: 'CF-03 (Congélation rapide)', capacityUnit: 'kg', minTemp: -30, maxTemp: -25, currentTemp: -28, status: 'Disponible', capacity: 500, currentLoad: 200 },
+      { id: '4', name: 'CF-04 (Découpe)', capacityUnit: 'kg', minTemp: 0, maxTemp: 4, currentTemp: 10, status: 'En maintenance', capacity: 800, currentLoad: 0 },
+      { id: '5', name: 'CF-05 (Sauvegarde)', capacityUnit: 'kg', minTemp: -18, maxTemp: -15, currentTemp: 0, status: 'En panne', capacity: 600, currentLoad: 0 },
+      { id: '6', name: 'CF-06 (Export)', capacityUnit: 'kg', minTemp: -22, maxTemp: -18, currentTemp: -19, status: 'Occupée', capacity: 2000, currentLoad: 1900 },
+    ];
+    localStorage.setItem('daba_chambres_froides', JSON.stringify(mockChambres));
+    return mockChambres;
+  },
+
+  async saveChambreFroide(chambre: ChambreFroide): Promise<ChambreFroide> {
+    const chambres = await this.getChambresFroides();
+    const index = chambres.findIndex(c => c.id === chambre.id);
+    if (index >= 0) {
+      chambres[index] = chambre;
+    } else {
+      chambres.push(chambre);
+    }
+    localStorage.setItem('daba_chambres_froides', JSON.stringify(chambres));
+    return chambre;
+  },
+
+  async getIncidents(): Promise<Incident[]> {
+    const raw = localStorage.getItem('daba_incidents_froid');
+    return raw ? JSON.parse(raw) : [];
+  },
+
+  async saveIncident(incident: Incident): Promise<Incident> {
+    const incidents = await this.getIncidents();
+    const index = incidents.findIndex(i => i.id === incident.id);
+    if (index >= 0) {
+      incidents[index] = incident;
+    } else {
+      incidents.push(incident);
+    }
+    localStorage.setItem('daba_incidents_froid', JSON.stringify(incidents));
+    return incident;
+  },
+
+  _getLotExtras(id: string) {
+    const extras = JSON.parse(localStorage.getItem('daba_lots_extras') || '{}');
+    return extras[id] || {};
+  },
+
+  _saveLotExtra(id: string, extra: any) {
+    const extras = JSON.parse(localStorage.getItem('daba_lots_extras') || '{}');
+    extras[id] = { ...extras[id], ...extra };
+    localStorage.setItem('daba_lots_extras', JSON.stringify(extras));
+  },
+
+  _applyExtras(lot: ProductionLot): ProductionLot {
+    const extras = this._getLotExtras(lot.id);
+    return { ...lot, ...extras };
   },
 
   async getAllLots(): Promise<ProductionLot[]> {
     try {
       const resp = await axiosInstance.get('/production/lots');
       const data = unwrap<any[]>(resp) || [];
-      return data.map(mapLot);
+      return data.map(mapLot).map(l => this._applyExtras(l));
     } catch (err) {
       console.error('[productionService] getAllLots error:', err);
-      return [];
+      // Fallback
+      const fallback = localStorage.getItem('daba_mock_lots_fallback');
+      return fallback ? JSON.parse(fallback).map((l:any) => this._applyExtras(l)) : [];
     }
   },
 
@@ -264,7 +334,7 @@ export const productionService = {
         const resp = await axiosInstance.get(`/production/lots`);
         raw = (unwrap<any[]>(resp) || []).filter((r) => STATUS_BACKEND_TO_FRONTEND[r.status] === step);
       }
-      return raw.map(mapLot);
+      return raw.map(mapLot).map(l => this._applyExtras(l));
     } catch (err) {
       console.error('[productionService] getLotsByStep error:', err);
       return [];
@@ -275,11 +345,22 @@ export const productionService = {
     try {
       const resp = await axiosInstance.get(`/production/lots/${id}`);
       const raw = unwrap<any>(resp);
-      return raw ? mapLot(raw) : undefined;
+      return raw ? this._applyExtras(mapLot(raw)) : undefined;
     } catch (err) {
       console.error('[productionService] getLotById error:', err);
+      // Fallback
+      const fallback = localStorage.getItem('daba_mock_lots_fallback');
+      if (fallback) {
+        const parsed = JSON.parse(fallback);
+        const lot = parsed.find((l:any) => l.id == id);
+        if (lot) return this._applyExtras(lot);
+      }
       return undefined;
     }
+  },
+
+  async updateLotExtras(id: string, updates: Partial<ProductionLot>): Promise<void> {
+    this._saveLotExtra(id, updates);
   },
 
   async updateLotStatus(
@@ -459,4 +540,122 @@ export const productionService = {
       return [];
     }
   },
+
+  // ============================================================
+  // MOCKS FOR PHASE 2 (Local Storage / In-Memory)
+  // ============================================================
+
+  // --- Production Orders ---
+  async getProductionOrders(): Promise<ProductionOrder[]> {
+    const raw = localStorage.getItem('mock_production_orders');
+    return raw ? JSON.parse(raw) : [];
+  },
+
+  async saveProductionOrder(order: ProductionOrder): Promise<ProductionOrder> {
+    const orders = await this.getProductionOrders();
+    const index = orders.findIndex(o => o.id === order.id);
+    if (index >= 0) {
+      orders[index] = order;
+    } else {
+      orders.push(order);
+    }
+    localStorage.setItem('mock_production_orders', JSON.stringify(orders));
+    return order;
+  },
+
+  async deleteProductionOrder(id: string): Promise<void> {
+    const orders = await this.getProductionOrders();
+    const updated = orders.filter(o => o.id !== id);
+    localStorage.setItem('mock_production_orders', JSON.stringify(updated));
+  },
+
+  // --- Recipes ---
+  async getRecipes(): Promise<ProductionRecipe[]> {
+    const raw = localStorage.getItem('mock_production_recipes');
+    if (raw) return JSON.parse(raw);
+    
+    // Seed default recipes
+    const defaults: ProductionRecipe[] = [
+      {
+        id: '1',
+        productName: 'Merguez',
+        ingredients: [
+          { id: 'i1', name: 'Viande hachée', quantityPer100kg: 80, unit: 'kg' },
+          { id: 'i2', name: 'Epices Merguez', quantityPer100kg: 5, unit: 'kg' },
+          { id: 'i3', name: 'Glace/Eau', quantityPer100kg: 10, unit: 'kg' },
+          { id: 'i4', name: 'Boyaux', quantityPer100kg: 5, unit: 'kg' }
+        ],
+        instructions: 'Broyage -> Mélange épices -> Poussage -> Séchage'
+      },
+      {
+        id: '2',
+        productName: 'Poulet fumé',
+        ingredients: [
+          { id: 'i1', name: 'Poulet entier', quantityPer100kg: 95, unit: 'kg' },
+          { id: 'i2', name: 'Sel/Saumure', quantityPer100kg: 5, unit: 'L' }
+        ],
+        instructions: 'Saumurage 24h -> Fumage au bois de hêtre à 75°C'
+      },
+      {
+        id: '3',
+        productName: 'Cuisses marinées',
+        ingredients: [
+          { id: 'i1', name: 'Cuisses de poulet', quantityPer100kg: 90, unit: 'kg' },
+          { id: 'i2', name: 'Marinade', quantityPer100kg: 10, unit: 'L' }
+        ],
+        instructions: 'Mélange viande et marinade -> Repos 12h en chambre froide'
+      }
+    ];
+    localStorage.setItem('mock_production_recipes', JSON.stringify(defaults));
+    return defaults;
+  },
+
+  async saveRecipe(recipe: ProductionRecipe): Promise<ProductionRecipe> {
+    const recipes = await this.getRecipes();
+    const index = recipes.findIndex(r => r.id === recipe.id);
+    if (index >= 0) {
+      recipes[index] = recipe;
+    } else {
+      recipes.push(recipe);
+    }
+    localStorage.setItem('mock_production_recipes', JSON.stringify(recipes));
+    return recipe;
+  },
+
+  async deleteRecipe(id: string): Promise<void> {
+    const recipes = await this.getRecipes();
+    const updated = recipes.filter(r => r.id !== id);
+    localStorage.setItem('mock_production_recipes', JSON.stringify(updated));
+  },
+
+  // --- Losses ---
+  async getLosses(): Promise<ProductionLoss[]> {
+    const raw = localStorage.getItem('mock_production_losses');
+    return raw ? JSON.parse(raw) : [];
+  },
+
+  async saveLoss(loss: ProductionLoss): Promise<ProductionLoss> {
+    const losses = await this.getLosses();
+    losses.push(loss); // usually we just append losses
+    localStorage.setItem('mock_production_losses', JSON.stringify(losses));
+    return loss;
+  },
+
+  // --- Non-Conformities ---
+  async getNonConformities(): Promise<NonConformity[]> {
+    const raw = localStorage.getItem('mock_production_non_conformities');
+    return raw ? JSON.parse(raw) : [];
+  },
+
+  async saveNonConformity(nc: NonConformity): Promise<NonConformity> {
+    const ncs = await this.getNonConformities();
+    const index = ncs.findIndex(n => n.id === nc.id);
+    if (index >= 0) {
+      ncs[index] = nc;
+    } else {
+      ncs.push(nc);
+    }
+    localStorage.setItem('mock_production_non_conformities', JSON.stringify(ncs));
+    return nc;
+  }
 };

@@ -7,21 +7,21 @@ const About: React.FC = () => {
   return (
     <div className="bg-white">
       {/* Hero Header */}
-      <section className="bg-brand-green py-20 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">À propos de DABA</h1>
-          <p className="text-xl max-w-3xl mx-auto opacity-90">
+      <section className="bg-brand-green py-12 md:py-20 text-white">
+        <div className="container mx-auto px-4 text-center mt-8 md:mt-0">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white">À propos de DABA</h1>
+          <p className="text-lg md:text-xl max-w-3xl mx-auto opacity-90 px-4 md:px-0">
             Une entreprise engagée dans la valorisation de la production nationale et l’excellence agroalimentaire au Togo.
           </p>
         </div>
       </section>
 
       {/* History */}
-      <section className="py-20">
+      <section className="py-12 md:py-20">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <div className="w-full lg:w-1/2">
-              <h2 className="text-3xl font-bold text-brand-blue mb-6">Notre Histoire</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-brand-blue mb-6">Notre Histoire</h2>
               <p className="text-gray-600 mb-6 leading-relaxed">
                 Fondée avec la vision de transformer le secteur de l'élevage local, DABA a débuté son parcours en mettant l'accent sur la qualité et l'hygiène. Nous avons identifié un besoin croissant de produits d'élevage sains et traçables sur le marché national.
               </p>
@@ -30,7 +30,7 @@ const About: React.FC = () => {
               </p>
             </div>
             <div className="w-full lg:w-1/2">
-              <div className="h-[400px] bg-gray-200 rounded-2xl overflow-hidden shadow-lg">
+              <div className="h-[300px] md:h-[400px] bg-gray-200 rounded-2xl overflow-hidden shadow-lg mx-auto w-full max-w-lg lg:max-w-none">
                 <img 
                   src={historyImg} 
                   alt="Notre Histoire" 
@@ -43,15 +43,15 @@ const About: React.FC = () => {
       </section>
 
       {/* Mission, Vision, Values */}
-      <section className="py-20 bg-brand-light">
+      <section className="py-12 md:py-20 bg-brand-light">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             <motion.div
               whileHover={{ y: -10 }}
-              className="bg-white p-10 rounded-2xl shadow-lg border-t-4 border-brand-green"
+              className="bg-white p-6 md:p-10 rounded-2xl shadow-lg border-t-4 border-brand-green"
             >
-              <Target className="text-brand-green mb-6" size={48} />
-              <h3 className="text-2xl font-bold text-brand-blue mb-4">Notre Mission</h3>
+              <Target className="text-brand-green mb-4 md:mb-6" size={40} />
+              <h3 className="text-xl md:text-2xl font-bold text-brand-blue mb-4">Notre Mission</h3>
               <p className="text-gray-600">
                 Fournir des produits d’élevage de qualité supérieure tout en soutenant l’économie locale et en garantissant une sécurité alimentaire optimale pour nos clients.
               </p>
@@ -59,10 +59,10 @@ const About: React.FC = () => {
 
             <motion.div
               whileHover={{ y: -10 }}
-              className="bg-white p-10 rounded-2xl shadow-lg border-t-4 border-brand-blue"
+              className="bg-white p-6 md:p-10 rounded-2xl shadow-lg border-t-4 border-brand-blue"
             >
-              <Eye className="text-brand-blue mb-6" size={48} />
-              <h3 className="text-2xl font-bold text-brand-blue mb-4">Notre Vision</h3>
+              <Eye className="text-brand-blue mb-4 md:mb-6" size={40} />
+              <h3 className="text-xl md:text-2xl font-bold text-brand-blue mb-4">Notre Vision</h3>
               <p className="text-gray-600">
                 Devenir le leader de la transformation agroalimentaire en Afrique de l’Ouest, reconnu pour son innovation et son engagement envers le développement durable.
               </p>
@@ -70,10 +70,10 @@ const About: React.FC = () => {
 
             <motion.div
               whileHover={{ y: -10 }}
-              className="bg-white p-10 rounded-2xl shadow-lg border-t-4 border-brand-red"
+              className="bg-white p-6 md:p-10 rounded-2xl shadow-lg border-t-4 border-brand-red"
             >
-              <Shield className="text-brand-red mb-6" size={48} />
-              <h3 className="text-2xl font-bold text-brand-blue mb-4">Nos Valeurs</h3>
+              <Shield className="text-brand-red mb-4 md:mb-6" size={40} />
+              <h3 className="text-xl md:text-2xl font-bold text-brand-blue mb-4">Nos Valeurs</h3>
               <p className="text-gray-600">
                 L’intégrité, l’excellence, l’innovation et le respect de l’environnement sont au cœur de chacune de nos actions et décisions.
               </p>
@@ -83,18 +83,18 @@ const About: React.FC = () => {
       </section>
 
       {/* Objectives */}
-      <section className="py-20">
+      <section className="py-12 md:py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-brand-blue mb-12 text-center">Nos Objectifs</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div className="flex gap-4 p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+          <h2 className="text-2xl md:text-3xl font-bold text-brand-blue mb-8 md:mb-12 text-center">Nos Objectifs</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+            <div className="flex flex-col sm:flex-row gap-4 p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow items-center sm:items-start text-center sm:text-left">
               <TrendingUp className="text-brand-green flex-shrink-0" size={32} />
               <div>
                 <h4 className="font-bold text-lg mb-2">Modernisation</h4>
                 <p className="text-gray-600 text-sm">Industrialiser les processus de transformation pour une meilleure productivité.</p>
               </div>
             </div>
-            <div className="flex gap-4 p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <div className="flex flex-col sm:flex-row gap-4 p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow items-center sm:items-start text-center sm:text-left">
               <Users className="text-brand-green flex-shrink-0" size={32} />
               <div>
                 <h4 className="font-bold text-lg mb-2">Impact Social</h4>

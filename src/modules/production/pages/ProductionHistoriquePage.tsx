@@ -30,12 +30,12 @@ export const ProductionHistoriquePage: React.FC = () => {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-3xl font-extrabold text-brand-text">Historique de Production</h2>
-          <p className="text-gray-500 text-sm mt-1">Suivi de toutes les activités de production</p>
+          <h2 className="text-3xl font-extrabold text-brand-text dark:text-white">Historique de Production</h2>
+          <p className="text-gray-500 dark:text-slate-400 text-sm mt-1">Suivi de toutes les activités de production</p>
         </div>
       </div>
 
-      <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-6">
+      <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-gray-100 dark:border-slate-800 p-6">
         <div className="space-y-6">
           {events.map((event, idx) => (
             <div key={idx} className="flex gap-4 relative">
@@ -47,14 +47,14 @@ export const ProductionHistoriquePage: React.FC = () => {
                   <div className="w-0.5 h-full bg-gray-200 mt-2" />
                 )}
               </div>
-              <div className="flex-1 bg-gray-50 rounded-xl p-4 border border-gray-100 hover:shadow-md transition-all">
+              <div className="flex-1 bg-gray-50 dark:bg-slate-800 rounded-xl p-4 border border-gray-100 dark:border-slate-800 hover:shadow-md transition-all">
                 <div className="flex items-start justify-between mb-2">
                   <div>
-                    <h4 className="font-bold text-brand-text flex items-center gap-2">
+                    <h4 className="font-bold text-brand-text dark:text-white flex items-center gap-2">
                       {event.step}
                       <ProductionStatusBadge status={event.step} />
                     </h4>
-                    <p className="text-gray-600 text-sm mt-1">{event.comment}</p>
+                    <p className="text-gray-600 dark:text-slate-300 text-sm mt-1">{event.comment}</p>
                   </div>
                   <Link 
                     to={`/admin/production/lots/${event.lotId}`}
@@ -63,7 +63,7 @@ export const ProductionHistoriquePage: React.FC = () => {
                     Voir lot
                   </Link>
                 </div>
-                <div className="flex items-center gap-4 text-xs text-gray-400">
+                <div className="flex items-center gap-4 text-xs text-gray-400 dark:text-slate-500">
                   <span className="flex items-center gap-1">
                     <Calendar size={14} /> {event.date}
                   </span>
@@ -81,7 +81,7 @@ export const ProductionHistoriquePage: React.FC = () => {
 
           {events.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-gray-500">Aucun événement historique disponible</p>
+              <p className="text-gray-500 dark:text-slate-400">Aucun événement historique disponible</p>
             </div>
           )}
         </div>

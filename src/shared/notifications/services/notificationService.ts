@@ -1,9 +1,8 @@
 
 import { Notification, NotificationModule, NotificationType, NotificationPriority } from '../types';
-import { MOCK_NOTIFICATIONS } from '../mocks/notifications.mock';
 
-// Mutable copy for in-memory operations
-let notifications = [...MOCK_NOTIFICATIONS];
+// Mutable copy for in-memory operations (until backend API is ready)
+let notifications: Notification[] = [];
 
 export const notificationService = {
   async getNotifications(options?: {

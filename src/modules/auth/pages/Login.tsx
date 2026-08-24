@@ -1,37 +1,75 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { LogIn, Mail, Lock } from 'lucide-react';
 import { useAuth, User, UserRole } from '../../../core/context/AuthContext';
+import { authService, LoginRequest, extractBackendErrorMessage } from '../../../core/services/authService';
 
 interface LoginFormData {
   email: string;
   password: string;
 }
 
+function getDefaultRedirectRoute(user: User): string {
+  const privileged: UserRole[] = [
+    'SUPER_ADMIN',
+    'ADMIN',
+    'DIRECTEUR',
+    'RESPONSABLE_ELEVAGE',
+    'RESPONSABLE_PRODUCTION',
+    'RESPONSABLE_STOCK',
+    'RESPONSABLE_COMMERCIAL',
+    'RESPONSABLE_ACHATS',
+    'RESPONSABLE_RH',
+    'RESPONSABLE_FINANCES',
+    'EMPLOYE',
+  ];
+  if (user.roles.some((r) => privileged.includes(r))) {
+    return '/admin/dashboard';
+  }
+  if (user.roles.includes('CUSTOMER')) {
+    return '/';
+  }
+  return '/';
+}
+
 const Login: React.FC = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm<LoginFormData>();
+  // Identifiants par défaut créés au démarrage par
+  // com.oseor.daba.config.SecurityDataInitializer (utilisateur admin).
+  // Le pré-remplissage permet d'éviter le HTTP 401 causé par la saisie
+  // d'identifiants inexistants. Le backend reste l'autorité d'authentification.
+  const { register, handleSubmit, formState: { errors } } = useForm<LoginFormData>({
+    defaultValues: {
+      email: 'admin@daba.local',
+      password: 'Admin@123',
+    },
+  });
   const { login } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
-  // Get the location the user was trying to access before login
-  const from = location.state?.from?.pathname || '/admin/dashboard';
+  const from = location.state?.from?.pathname;
 
-  const onSubmit = (data: LoginFormData) => {
-    console.log('Login attempt:', data);
-    
-    // Simulate login - replace with actual API call later
-    // For now, we'll create a mock user
-    const mockUser: User = {
-      id: '1',
-      name: 'Admin User',
-      email: data.email,
-      role: 'ADMIN' as UserRole,
-    };
-
-    login(mockUser);
-    navigate(from, { replace: true });
+  const onSubmit = async (data: LoginFormData) => {
+    setSubmitting(true);
+    setSubmitError(null);
+    try {
+      const payload: LoginRequest = {
+        email: data.email,
+        password: data.password,
+      };
+      const authenticatedUser = await authService.login(payload);
+      login(authenticatedUser);
+      const destination = from ?? getDefaultRedirectRoute(authenticatedUser);
+      navigate(destination, { replace: true });
+    } catch (err) {
+      const message = extractBackendErrorMessage(err);
+      setSubmitError(message);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -81,11 +119,18 @@ const Login: React.FC = () => {
               {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
             </div>
 
+            {submitError && (
+              <div className="text-sm text-brand-red bg-red-50 border border-red-100 rounded-xl p-3">
+                {submitError}
+              </div>
+            )}
+
             <button
               type="submit"
-              className="w-full bg-brand-blue text-white py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3 hover:bg-opacity-90 transition-all shadow-xl"
+              disabled={submitting}
+              className="w-full bg-brand-blue text-white py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3 hover:bg-opacity-90 transition-all shadow-xl disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              Se connecter <LogIn size={20} />
+              {submitting ? 'Connexion en cours...' : (<>Se connecter <LogIn size={20} /></>)}
             </button>
 
             <p className="text-center text-gray-500 text-sm">

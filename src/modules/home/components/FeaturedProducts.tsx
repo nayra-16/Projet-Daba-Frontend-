@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ShoppingCart } from 'lucide-react';
 import { useCart } from '../../../core/context/CartContext';
-import pouletEntierImg from '../../products/assets/poulet-entier.jpeg';
-import decoupeImg from '../../products/assets/decoupe.jpeg';
+import pouletEntierImg from '../../products/assets/poulet-entier.webp';
+import decoupeImg from '../../products/assets/decoupe.webp';
+import saucisseImg from '../../products/assets/saucisse-fumee.jpeg';
 
 const products = [
   {
@@ -27,7 +28,7 @@ const products = [
     id: '6',
     name: 'Saucisse',
     price: 1000,
-    image: decoupeImg,
+    image: saucisseImg,
     category: 'Charcuteries',
     available: true
   }
@@ -37,12 +38,12 @@ const FeaturedProducts: React.FC = () => {
   const { addToCart } = useCart();
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-12 md:py-20 bg-white">
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-end mb-12">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-12 gap-4">
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-blue mb-4">Nos produits les plus demandés</h2>
-            <div className="w-20 h-1.5 bg-brand-green rounded-full"></div>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-brand-blue mb-4 leading-tight">Nos produits les plus demandés</h2>
+            <div className="w-16 md:w-20 h-1.5 bg-brand-green rounded-full"></div>
           </div>
           <Link to="/products" className="bg-brand-green text-white px-6 py-2 rounded-md font-bold hover:bg-opacity-90 transition-all hidden md:block">
             Tout voir →

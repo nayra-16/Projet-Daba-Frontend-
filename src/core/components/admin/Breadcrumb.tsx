@@ -1,61 +1,78 @@
-
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
-import { ADMIN_MENU_ITEMS, AdminMenuItem, AdminSubMenuItem } from '../../constants/admin';
+import { clsx, type ClassValue } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+import { ADMIN_MENU_ITEMS } from '../../constants/admin';
+import { useTheme } from '../../context/ThemeContext';
+
+function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
 
 export const Breadcrumb: React.FC = () => {
   const location = useLocation();
+  const { isDark } = useTheme();
   const pathSegments = location.pathname.split('/').filter(Boolean);
 
-  // Helper function to find menu item by path
-  const findMenuItemByPath = (path: string): { name: string; isSubItem: boolean } | null => {
+  // Helper : retrouve le nom d'un module à partir de son préfixe
+  const findMenuItemByPrefix = (pathPrefix: string): string | null => {
     for (const item of ADMIN_MENU_ITEMS) {
-      if (item.path === path) {
-        return { name: item.name, isSubItem: false };
-      }
-      if (item.subItems) {
-        for (const subItem of item.subItems) {
-          if (subItem.path === path) {
-            return { name: subItem.name, isSubItem: true };
-          }
-        }
-      }
+      if (item.path === pathPrefix) return item.name;
     }
     return null;
   };
 
-  // Build breadcrumb items
+  // Construit la chaîne de segments à partir du menu plat
   const breadcrumbItems: Array<{ name: string; path: string }> = [
-    { name: 'Accueil', path: '/admin/dashboard' },
+    { name: 'Dashboard', path: '/admin/dashboard' },
   ];
 
   let currentPath = '';
   for (let i = 0; i < pathSegments.length; i++) {
     currentPath += `/${pathSegments[i]}`;
-    // Check if this path is a known menu item
-    const menuItem = findMenuItemByPath(currentPath);
-    if (menuItem) {
-      breadcrumbItems.push({ name: menuItem.name, path: currentPath });
+    const moduleName = findMenuItemByPrefix(currentPath);
+    if (moduleName) {
+      breadcrumbItems.push({ name: moduleName, path: currentPath });
     }
   }
 
   return (
-    <div className="flex items-center gap-2 text-sm text-gray-500">
+    <div
+      className={cn(
+        'flex items-center gap-2 text-xs',
+        isDark ? 'text-slate-500' : 'text-slate-400',
+      )}
+    >
       {breadcrumbItems.map((item, index) => (
-        <React.Fragment key={item.path}>
+        <React.Fragment key={`crumb-${index}-${item.path}`}>
           {index < breadcrumbItems.length - 1 ? (
             <Link
               to={item.path}
-              className="hover:text-brand-green transition-colors"
+              className={cn(
+                'transition-colors',
+                isDark
+                  ? 'hover:text-slate-200'
+                  : 'hover:text-slate-600',
+              )}
             >
               {item.name}
             </Link>
           ) : (
-            <span className="text-brand-text font-medium">{item.name}</span>
+            <span
+              className={cn(
+                'font-medium',
+                isDark ? 'text-slate-300' : 'text-slate-500',
+              )}
+            >
+              {item.name}
+            </span>
           )}
           {index < breadcrumbItems.length - 1 && (
-            <ChevronRight size={16} className="text-gray-400" />
+            <ChevronRight
+              size={12}
+              className={isDark ? 'text-slate-700' : 'text-slate-300'}
+            />
           )}
         </React.Fragment>
       ))}

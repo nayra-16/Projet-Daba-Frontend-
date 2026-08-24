@@ -1,27 +1,35 @@
-
 import axiosInstance from '../api/axios';
+import type { ApiResponse } from '../types/api';
+import type { UserResponse, UserCreateRequest, UserUpdateRequest, PaginationResponse } from '../types/api';
 
+/**
+ * Service User — aligné 1:1 avec com.oseor.daba.user.controller.UserController.
+ */
 export const userService = {
-  async getUsers() {
-    // TODO: Replace with actual API call
-    console.log('userService.getUsers called');
-    // const response = await axiosInstance.get('/users');
-    // return response.data;
+  async getAll(page = 0, size = 50, sortBy = 'id', sortDir = 'asc') {
+    const r = await axiosInstance.get<ApiResponse<PaginationResponse<UserResponse>>>(
+      '/users',
+      { params: { page, size, sortBy, sortDir } }
+    );
+    return r.data.data;
   },
 
-  async getUserById(id: string) {
-    console.log('userService.getUserById called with', id);
+  async getById(id: number): Promise<UserResponse> {
+    const r = await axiosInstance.get<ApiResponse<UserResponse>>(`/users/${id}`);
+    return r.data.data;
   },
 
-  async createUser() {
-    // TODO: Implement
+  async create(payload: UserCreateRequest): Promise<UserResponse> {
+    const r = await axiosInstance.post<ApiResponse<UserResponse>>('/users', payload);
+    return r.data.data;
   },
 
-  async updateUser() {
-    // TODO: Implement
+  async update(id: number, payload: UserUpdateRequest): Promise<UserResponse> {
+    const r = await axiosInstance.put<ApiResponse<UserResponse>>(`/users/${id}`, payload);
+    return r.data.data;
   },
 
-  async deleteUser() {
-    // TODO: Implement
+  async remove(id: number): Promise<void> {
+    await axiosInstance.delete<ApiResponse<void>>(`/users/${id}`);
   },
 };

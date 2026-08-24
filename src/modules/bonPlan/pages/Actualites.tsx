@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
-import bannerArticles from '../assets/kapi/banner_articles.jpg';
+import bannerArticles from '../assets/kapi/banner_articles.webp';
 import zencardPub2 from '../assets/kapi/zencard_pub2.jpg';
 import zencardPub3 from '../assets/kapi/zencard_pub3.jpg';
 import zencardPub5 from '../assets/kapi/zencard_pub5.jpg';

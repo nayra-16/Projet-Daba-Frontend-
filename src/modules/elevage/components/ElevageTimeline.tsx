@@ -21,7 +21,8 @@ const iconMap: Record<TimelineEventType, React.ReactNode> = {
   [TimelineEventType.MORTALITE]: <Activity size={18} />,
   [TimelineEventType.DISTRIBUTION_ALIMENT]: <Package size={18} />,
   [TimelineEventType.TRANSFERT]: <Package size={18} />,
-  [TimelineEventType.ABATTAGE]: <Package size={18} />
+  [TimelineEventType.ABATTAGE]: <Package size={18} />,
+  [TimelineEventType.CHANGEMENT_STATUT]: <Activity size={18} />,
 };
 
 const colorMap: Record<TimelineEventType, string> = {
@@ -32,7 +33,8 @@ const colorMap: Record<TimelineEventType, string> = {
   [TimelineEventType.MORTALITE]: 'bg-brand-red',
   [TimelineEventType.DISTRIBUTION_ALIMENT]: 'bg-brand-green',
   [TimelineEventType.TRANSFERT]: 'bg-blue-500',
-  [TimelineEventType.ABATTAGE]: 'bg-purple-500'
+  [TimelineEventType.ABATTAGE]: 'bg-purple-500',
+  [TimelineEventType.CHANGEMENT_STATUT]: 'bg-brand-green',
 };
 
 export const ElevageTimeline: React.FC<ElevageTimelineProps> = ({ events }) => {

@@ -4,9 +4,12 @@ export interface DashboardStat {
   icon: string;
   value: string | number;
   title: string;
-  variation: number;
-  trend: 'up' | 'down';
+  variation?: number;
+  trend?: 'up' | 'down';
   color: string;
+  route?: string;
+  module?: string;
+  badge?: string;
 }
 
 export interface ChartDataPoint {
@@ -85,7 +88,7 @@ export interface AlertItem {
 
 export interface RecentActivity {
   id: string;
-  type: 'Connexion' | 'Création de commande' | 'Ajout d\'un lot' | 'Transformation' | 'Suppression' | 'Modification';
+  type: string;
   description: string;
   time: string;
   user: string;

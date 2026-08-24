@@ -5,14 +5,15 @@ import { Phone, Mail, MapPin, Send, Facebook, Twitter, Instagram, Linkedin } fro
 import { CONTACT_INFO, SOCIAL_LINKS } from '../../../core/constants';
 import { ContactForm } from '../../../shared/types/common';
 
+import { useToast } from '../../../core/ui/Feedback';
+
 const Contact: React.FC = () => {
   const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm<ContactForm>();
+  const t = useToast();
 
   const onSubmit = async (data: ContactForm) => {
-    // Simulate API call
-    console.log(data);
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    alert('Message envoyé avec succès !');
+    await new Promise(resolve => setTimeout(resolve, 800));
+    t.success('Message envoyé', 'Votre message a bien été transmis à notre équipe.');
     reset();
   };
 

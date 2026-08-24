@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import elevageImg from '../../../assets/expertise/elevage.jpeg';
-import transformationImg from '../../../assets/expertise/transformation.jpeg';
+import elevageImg from '../../../assets/expertise/elevage.webp';
+import transformationImg from '../../../assets/expertise/transformation.webp';
 import abattoirImg from '../../../assets/expertise/abattoir.jpeg';
-import distributionImg from '../../../assets/expertise/distribution.jpeg';
+import distributionImg from '../../../assets/expertise/distribution.webp';
 
 const expertiseItems = [
   {

@@ -4,7 +4,8 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 import './index.css'
 import { AuthProvider } from './core/context/AuthContext'
-
+import { ThemeProvider } from './core/context/ThemeContext'
+import './core/i18n/config'
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter
@@ -13,9 +14,11 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         v7_relativeSplatPath: true,
       }}
     >
-      <AuthProvider>
-        <App />
-      </AuthProvider>
+      <ThemeProvider>
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>,
 )

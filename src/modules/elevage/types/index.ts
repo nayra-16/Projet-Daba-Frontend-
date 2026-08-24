@@ -142,6 +142,17 @@ export interface TimelineEvent {
   createdAt: string;
 }
 
+export interface Animal {
+  id: string;
+  tag?: string;
+  type: string;
+  sexe?: string;
+  birthDate?: string;
+  weight?: number;
+  lotId: string;
+  createdAt?: string;
+}
+
 export interface ElevageDashboardStats {
   lotsArrivee: number;
   lotsEnElevage: number;
@@ -156,6 +167,7 @@ export interface ElevageDashboardStats {
   monthlyFeedConsumption: number; // in kg
   upcomingVaccinations: HealthEvent[];
   lotsReadyForSlaughter: Lot[];
+  activeLotsCount: number;
   birdEvolution: { date: string; count: number }[];
   feedEvolution: { date: string; quantity: number }[];
   mortalityEvolution: { date: string; count: number }[];

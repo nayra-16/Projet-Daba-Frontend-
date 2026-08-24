@@ -5,18 +5,19 @@ import { CreditCard, Truck, Home, User, Phone, Mail, MapPin } from 'lucide-react
 import { useCart } from '../../../core/context/CartContext';
 import { Order } from '../types';
 
+import { useToast } from '../../../core/ui/Feedback';
+
 const Checkout: React.FC = () => {
   const { cart, getCartTotal, clearCart } = useCart();
   const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<Order>();
+  const t = useToast();
 
   const total = getCartTotal() + 1000;
 
   const onSubmit = async (data: Order) => {
-    // Simulate API call
-    console.log('Order Data:', { ...data, items: cart, total });
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    alert('Commande passée avec succès !');
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    t.success('Commande confirmée', 'Votre commande a été enregistrée avec succès !');
     clearCart();
     navigate('/');
   };

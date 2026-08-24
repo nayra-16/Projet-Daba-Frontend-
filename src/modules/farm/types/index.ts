@@ -1,11 +1,16 @@
 export interface Farm {
-  id: string;
+  id: string | number;
   name: string;
-  location: string;
-  area: number; // en hectares
-  ownerName: string;
-  contactPhone: string;
-  createdAt: string;
+  location?: string;
+  address?: string;
+  area?: number; // en hectares
+  ownerName?: string;
+  contactPhone?: string;
+  phone?: string;
+  email?: string;
+  createdAt?: string;
+  poulaillersCount?: number;
+  lotsCount?: number;
 }
 
 export interface Animal {
