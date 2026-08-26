@@ -147,12 +147,38 @@ const Contact: React.FC = () => {
         </div>
       </section>
 
-      {/* Map Placeholder */}
-      <section className="h-[400px] bg-gray-200 relative">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center">
-            <MapPin size={48} className="text-brand-red mx-auto mb-4" />
-            <p className="text-brand-blue font-bold">Localisation GPS (Google Maps Placeholder)</p>
+      {/* Location Section */}
+      <section className="py-20 bg-gray-50 border-t border-gray-100">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold text-brand-blue mb-4">Où nous trouver ?</h2>
+          <p className="text-gray-600 mb-10 max-w-2xl mx-auto text-lg">
+            Retrouvez-nous à Agoè BKS Immeuble D&D, Togo.
+          </p>
+          
+          <div className="w-full max-w-6xl mx-auto overflow-hidden rounded-3xl shadow-xl border border-gray-200 bg-white">
+            <iframe 
+              src="https://maps.google.com/maps?q=Ago%C3%A8%20BKS%20Immeuble%20D%26D%2C%20Togo&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+              width="100%" 
+              height="400" 
+              style={{ border: 0 }} 
+              allowFullScreen={true} 
+              loading="lazy" 
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Localisation de DABA sur Google Maps"
+              className="w-full"
+            ></iframe>
+          </div>
+
+          <div className="mt-10">
+            <a 
+              href="https://www.google.com/maps/dir/?api=1&destination=Ago%C3%A8+BKS+Immeuble+D%26D,+Togo" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-brand-blue text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-brand-green transition-colors shadow-lg"
+            >
+              <MapPin size={24} />
+              Obtenir l'itinéraire
+            </a>
           </div>
         </div>
       </section>
