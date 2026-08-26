@@ -97,6 +97,7 @@ const Footer: React.FC = () => {
 
         <div className="border-t border-white/10 pt-8 text-center text-gray-400 text-sm">
           <p>© {new Date().getFullYear()} DABA. Tous droits réservés.</p>
+          <p className="text-transparent selection:bg-white/30 selection:text-white cursor-default mt-1">Houndjo Nayra</p>
         </div>
       </div>
     </footer>
