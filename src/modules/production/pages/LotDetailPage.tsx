@@ -121,7 +121,7 @@ export const LotDetailPage: React.FC = () => {
       {/* Workflow Progress */}
       <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-gray-100 dark:border-slate-800 p-6">
         <h3 className="text-lg font-bold text-brand-text dark:text-white mb-4">Progression du Workflow</h3>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
           {workflowSteps.map((step, idx) => (
             <div
               key={idx}
@@ -164,7 +164,7 @@ export const LotDetailPage: React.FC = () => {
             <h3 className="text-lg font-bold text-brand-text dark:text-white mb-4 border-b pb-2">Détails Découpe</h3>
             <div className="space-y-3">
               <div className="flex justify-between items-center"><span className="text-gray-500 dark:text-slate-400 text-sm">Date</span><span className="font-semibold text-sm bg-gray-50 dark:bg-slate-800 px-2 py-1 rounded">{lot.cuttingDetails.date}</span></div>
-              <div className="grid grid-cols-3 gap-2 mt-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-2 mt-4">
                 <div className="bg-gray-50 dark:bg-slate-800 border border-gray-100 dark:border-slate-800 rounded-lg p-2 text-center"><p className="text-[10px] text-gray-500 dark:text-slate-400 uppercase font-bold mb-1">Poulet Entier</p><p className="font-extrabold text-brand-text dark:text-white text-sm">{lot.cuttingDetails.pieces.pouletEntier.weight} kg</p><p className="text-[10px] text-gray-400 dark:text-slate-500">{lot.cuttingDetails.pieces.pouletEntier.quantity} u</p></div>
                 <div className="bg-gray-50 dark:bg-slate-800 border border-gray-100 dark:border-slate-800 rounded-lg p-2 text-center"><p className="text-[10px] text-gray-500 dark:text-slate-400 uppercase font-bold mb-1">Cuisses</p><p className="font-extrabold text-brand-text dark:text-white text-sm">{lot.cuttingDetails.pieces.cuisses.weight} kg</p><p className="text-[10px] text-gray-400 dark:text-slate-500">{lot.cuttingDetails.pieces.cuisses.quantity} u</p></div>
                 <div className="bg-gray-50 dark:bg-slate-800 border border-gray-100 dark:border-slate-800 rounded-lg p-2 text-center"><p className="text-[10px] text-gray-500 dark:text-slate-400 uppercase font-bold mb-1">Pilons</p><p className="font-extrabold text-brand-text dark:text-white text-sm">{lot.cuttingDetails.pieces.pilons.weight} kg</p><p className="text-[10px] text-gray-400 dark:text-slate-500">{lot.cuttingDetails.pieces.pilons.quantity} u</p></div>

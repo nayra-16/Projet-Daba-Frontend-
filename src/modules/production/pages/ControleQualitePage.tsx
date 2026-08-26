@@ -436,7 +436,7 @@ export const ControleQualitePage: React.FC = () => {
               {/* Overall Conformity */}
               <div className="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-700 p-3 rounded-xl">
                 <label className="block text-xs font-bold text-gray-500 dark:text-slate-400 uppercase mb-2">Verdict Global</label>
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
                   <button
                     type="button"
                     onClick={() => setConformity('CONFORME')}
@@ -476,7 +476,7 @@ export const ControleQualitePage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-[10px] font-bold text-gray-400 dark:text-slate-500 uppercase mb-1">Date Contrôle</label>
                   <input
@@ -557,7 +557,7 @@ export const ControleQualitePage: React.FC = () => {
                    </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <span className="text-gray-400 dark:text-slate-500 font-bold block">Date Inspection</span>
                     <span className="font-semibold text-brand-text dark:text-white">{selectedLot.qualityDetails.date}</span>

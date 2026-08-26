@@ -109,7 +109,7 @@ export const TabChambres: React.FC<TabChambresProps> = ({ chambres, lotsPackaged
                 </select>
               </div>
             </div>
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
               <div>
                 <label className="block text-xs font-bold text-gray-500 mb-1">Min Temp</label>
                 <input

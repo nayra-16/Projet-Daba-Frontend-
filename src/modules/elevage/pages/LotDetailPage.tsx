@@ -882,7 +882,7 @@ export const LotDetailPage: React.FC = () => {
         }
       >
         <form id="feed-form" onSubmit={handleAddFeed} className="space-y-4">
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-1">
                 Date <span className="text-brand-red">*</span>
@@ -954,7 +954,7 @@ export const LotDetailPage: React.FC = () => {
         }
       >
         <form id="animal-form" onSubmit={handleAddAnimal} className="space-y-4">
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-1">Tag / Identifiant</label>
               <input
@@ -980,7 +980,7 @@ export const LotDetailPage: React.FC = () => {
               />
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-1">Type</label>
               <input

@@ -134,7 +134,7 @@ export const FourAnnuaire: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                <div className="grid grid-cols-2 gap-3 mt-3 text-sm">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3 text-sm">
                   <div>
                     <p className="text-xs text-gray-500 uppercase">Produits livrés</p>
                     <p className="font-bold text-brand-blue">{s.count}</p>

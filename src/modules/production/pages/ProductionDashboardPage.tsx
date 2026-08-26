@@ -236,7 +236,7 @@ export const ProductionDashboardPage: React.FC = () => {
       </div>
 
       {/* TOP KPIS (6 Cards) */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-6">
         
         {/* KPI 1 */}
         <div className="bg-white dark:bg-[#212430] border border-gray-200 dark:border-[#2F3342] rounded-xl p-4 flex flex-col justify-between">
@@ -425,27 +425,27 @@ export const ProductionDashboardPage: React.FC = () => {
              <span>Planning de production <span className="text-gray-400 dark:text-slate-500 font-normal">(Aujourd'hui)</span></span>
            </h3>
            <div className="flex-1 space-y-4">
-              <div className="grid grid-cols-4 gap-2 text-xs text-gray-700 dark:text-slate-300 border-b border-gray-200 dark:border-[#2F3342] pb-2">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs text-gray-700 dark:text-slate-300 border-b border-gray-200 dark:border-[#2F3342] pb-2">
                  <div className="col-span-1">08:00</div>
                  <div className="col-span-2">Abattage <span className="text-gray-400 dark:text-slate-500 ml-1">LOT-025</span></div>
                  <div className="col-span-1 text-right flex items-center justify-end gap-1"><div className="w-1.5 h-1.5 rounded-full bg-emerald-500"></div> En cours</div>
               </div>
-              <div className="grid grid-cols-4 gap-2 text-xs text-gray-700 dark:text-slate-300 border-b border-gray-200 dark:border-[#2F3342] pb-2">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs text-gray-700 dark:text-slate-300 border-b border-gray-200 dark:border-[#2F3342] pb-2">
                  <div className="col-span-1">09:30</div>
                  <div className="col-span-2">Découpe <span className="text-gray-400 dark:text-slate-500 ml-1">LOT-024</span></div>
                  <div className="col-span-1 text-right flex items-center justify-end gap-1"><div className="w-1.5 h-1.5 rounded-full bg-emerald-500"></div> En cours</div>
               </div>
-              <div className="grid grid-cols-4 gap-2 text-xs text-gray-700 dark:text-slate-300 border-b border-gray-200 dark:border-[#2F3342] pb-2">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs text-gray-700 dark:text-slate-300 border-b border-gray-200 dark:border-[#2F3342] pb-2">
                  <div className="col-span-1">11:00</div>
                  <div className="col-span-2 text-gray-500 dark:text-slate-400">Transformation <br/><span className="text-gray-400 dark:text-slate-500">Cuisses marinées</span></div>
                  <div className="col-span-1 text-right flex items-center justify-end gap-1 text-gray-500 dark:text-slate-400"><div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div> Planifié</div>
               </div>
-              <div className="grid grid-cols-4 gap-2 text-xs text-gray-700 dark:text-slate-300 border-b border-gray-200 dark:border-[#2F3342] pb-2">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs text-gray-700 dark:text-slate-300 border-b border-gray-200 dark:border-[#2F3342] pb-2">
                  <div className="col-span-1">14:00</div>
                  <div className="col-span-2 text-gray-500 dark:text-slate-400">Conditionnement <br/><span className="text-gray-400 dark:text-slate-500">Poulet fumé</span></div>
                  <div className="col-span-1 text-right flex items-center justify-end gap-1 text-gray-500 dark:text-slate-400"><div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div> Planifié</div>
               </div>
-              <div className="grid grid-cols-4 gap-2 text-xs text-gray-700 dark:text-slate-300">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs text-gray-700 dark:text-slate-300">
                  <div className="col-span-1">15:30</div>
                  <div className="col-span-2 text-gray-500 dark:text-slate-400">Contrôle qualité <span className="text-gray-400 dark:text-slate-500 ml-1">LOT-023</span></div>
                  <div className="col-span-1 text-right flex items-center justify-end gap-1 text-gray-500 dark:text-slate-400"><div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div> Planifié</div>
@@ -729,7 +729,7 @@ export const ProductionDashboardPage: React.FC = () => {
 
                 <div>
                   <h4 className="text-sm font-bold text-slate-800 mb-2 bg-gray-100 px-2 py-1 rounded">1. Synthèse Globale</h4>
-                  <div className="grid grid-cols-2 gap-4 text-sm">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                     <div className="flex justify-between border-b pb-1">
                       <span className="text-gray-600">Poulets traités (j)</span>
                       <span className="font-bold text-slate-800">{pouletsTraitesAujourdhui}</span>

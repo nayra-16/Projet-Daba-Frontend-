@@ -109,7 +109,7 @@ export const TabIncidents: React.FC<TabIncidentsProps> = ({ chambres, canEdit, o
                 {chambres.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
               </select>
             </div>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
               <div>
                 <label className="block text-xs font-bold text-gray-500 mb-1">Date</label>
                 <input type="date" value={date} onChange={e => setDate(e.target.value)} required className="w-full px-2 py-2 border rounded-lg text-sm" />
@@ -135,7 +135,7 @@ export const TabIncidents: React.FC<TabIncidentsProps> = ({ chambres, canEdit, o
         </form>
       )}
 
-      <div className="bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 shadow-sm rounded-xl overflow-hidden">
+      <div className="bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 shadow-sm rounded-xl overflow-x-auto">
         <table className="w-full">
           <thead className="bg-gray-50 dark:bg-slate-800 border-b border-gray-200 dark:border-slate-700">
             <tr>

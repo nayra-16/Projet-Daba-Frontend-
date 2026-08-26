@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Facebook, Twitter, Instagram, Linkedin, Send } from 'lucide-react';
+import { Phone, Mail, MapPin, Facebook, Send } from 'lucide-react';
+import { TikTok } from './TikTok';
 import { CONTACT_INFO, MENU_LINKS } from '../constants';
 
 const Footer: React.FC = () => {
@@ -30,17 +31,11 @@ const Footer: React.FC = () => {
               Des produits d’élevage frais, sains et de qualité pour tous. DABA accompagne les particuliers et les professionnels avec excellence.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-brand-green transition-colors">
+              <a href="https://www.facebook.com/share/1EatBLBLf9/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-brand-green transition-colors cursor-pointer">
                 <Facebook size={18} />
               </a>
-              <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-brand-green transition-colors">
-                <Twitter size={18} />
-              </a>
-              <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-brand-green transition-colors">
-                <Instagram size={18} />
-              </a>
-              <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-brand-green transition-colors">
-                <Linkedin size={18} />
+              <a href="https://vm.tiktok.com/ZS9BrWa2Y5psg-IuyeK/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-brand-green transition-colors cursor-pointer">
+                <TikTok size={18} />
               </a>
             </div>
           </div>

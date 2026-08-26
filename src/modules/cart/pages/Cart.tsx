@@ -129,7 +129,7 @@ const Cart: React.FC = () => {
                 Passer la commande
               </Link>
 
-              <div className="mt-8 grid grid-cols-4 gap-4 opacity-50 grayscale">
+              <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 opacity-50 grayscale">
                 <div className="h-8 bg-gray-200 rounded"></div>
                 <div className="h-8 bg-gray-200 rounded"></div>
                 <div className="h-8 bg-gray-200 rounded"></div>

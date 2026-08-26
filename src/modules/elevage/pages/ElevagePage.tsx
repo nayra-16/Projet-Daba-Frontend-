@@ -1334,7 +1334,7 @@ export const ElevagePage: React.FC = () => {
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-1">Poulailler assigné</label>
               <select
@@ -1364,7 +1364,7 @@ export const ElevagePage: React.FC = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-1">Date d'entrée / Arrivée</label>
               <input
@@ -1414,7 +1414,7 @@ export const ElevagePage: React.FC = () => {
       >
         {viewingLot && (
           <div className="space-y-6">
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 bg-gray-50 p-4 rounded-2xl border border-gray-100">
+            <div className="grid grid-cols-1 md:grid-cols-2 sm:grid-cols-4 gap-3 bg-gray-50 p-4 rounded-2xl border border-gray-100">
               <div>
                 <p className="text-xs text-gray-500 uppercase">Poulailler</p>
                 <p className="font-bold text-brand-text">{getPoulaillerName(viewingLot.poulailerId)}</p>
@@ -1436,7 +1436,7 @@ export const ElevagePage: React.FC = () => {
             {/* Workflow Progress */}
             <div>
               <h4 className="font-bold text-brand-text text-sm mb-3">Progression du Cycle d'Élevage</h4>
-              <div className="grid grid-cols-4 gap-2 text-center text-xs font-bold">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-center text-xs font-bold">
                 {[
                   { step: 'Démarrage', key: LotStatus.DEMARRAGE },
                   { step: 'Croissance', key: LotStatus.CROISSANCE },
@@ -1577,7 +1577,7 @@ export const ElevagePage: React.FC = () => {
 
             <div className="space-y-2">
               <label className="block text-sm font-bold text-gray-700">Type de transfert</label>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                 <button
                   type="button"
                   onClick={() => setTransferToProd(false)}
@@ -1740,7 +1740,7 @@ export const ElevagePage: React.FC = () => {
         }
       >
         <form id="health-form" onSubmit={handleHealthSubmit} className="space-y-4">
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-1">Lot concerné</label>
               <select
@@ -1779,7 +1779,7 @@ export const ElevagePage: React.FC = () => {
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-1">Dose</label>
               <input
@@ -1833,7 +1833,7 @@ export const ElevagePage: React.FC = () => {
         }
       >
         <form id="feed-form" onSubmit={handleFeedSubmit} className="space-y-4">
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-1">Lot</label>
               <select
@@ -1860,7 +1860,7 @@ export const ElevagePage: React.FC = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-1">Type d'Aliment</label>
               <select
@@ -1919,7 +1919,7 @@ export const ElevagePage: React.FC = () => {
         }
       >
         <form id="history-form" onSubmit={handleHistorySubmit} className="space-y-4">
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-1">Lot</label>
               <select

@@ -397,7 +397,7 @@ export const LotsPage: React.FC = () => {
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-1">
                 Effectif (quantité) <span className="text-brand-red">*</span>
@@ -425,7 +425,7 @@ export const LotsPage: React.FC = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-1">Poulailler assigné</label>
               <select

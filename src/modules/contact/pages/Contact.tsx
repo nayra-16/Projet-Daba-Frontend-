@@ -1,7 +1,8 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, Send, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Phone, Mail, MapPin, Send, Facebook } from 'lucide-react';
+import { TikTok } from '../../../core/components/TikTok';
 import { CONTACT_INFO, SOCIAL_LINKS } from '../../../core/constants';
 import { ContactForm } from '../../../shared/types/common';
 
@@ -67,17 +68,11 @@ const Contact: React.FC = () => {
 
               <h4 className="font-bold text-xl text-brand-blue mb-6">Suivez-nous</h4>
               <div className="flex gap-4">
-                <a href="#" className="w-12 h-12 bg-brand-blue text-white rounded-xl flex items-center justify-center hover:bg-brand-green transition-all shadow-lg">
+                <a href="https://www.facebook.com/share/1EatBLBLf9/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-brand-blue text-white rounded-xl flex items-center justify-center hover:bg-brand-green transition-all shadow-lg cursor-pointer">
                   <Facebook size={20} />
                 </a>
-                <a href="#" className="w-12 h-12 bg-brand-blue text-white rounded-xl flex items-center justify-center hover:bg-brand-green transition-all shadow-lg">
-                  <Twitter size={20} />
-                </a>
-                <a href="#" className="w-12 h-12 bg-brand-blue text-white rounded-xl flex items-center justify-center hover:bg-brand-green transition-all shadow-lg">
-                  <Instagram size={20} />
-                </a>
-                <a href="#" className="w-12 h-12 bg-brand-blue text-white rounded-xl flex items-center justify-center hover:bg-brand-green transition-all shadow-lg">
-                  <Linkedin size={20} />
+                <a href="https://vm.tiktok.com/ZS9BrWa2Y5psg-IuyeK/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-brand-blue text-white rounded-xl flex items-center justify-center hover:bg-brand-green transition-all shadow-lg cursor-pointer">
+                  <TikTok size={20} />
                 </a>
               </div>
             </div>

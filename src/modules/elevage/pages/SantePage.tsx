@@ -299,7 +299,7 @@ export const SantePage: React.FC = () => {
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-1">
                 Date <span className="text-brand-red">*</span>

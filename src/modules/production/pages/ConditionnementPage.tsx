@@ -394,7 +394,7 @@ export const ConditionnementPage: React.FC = () => {
                 <div className="border border-brand-blue/20 bg-brand-blue/5 rounded-xl p-3 space-y-3">
                    <h4 className="text-[10px] font-bold text-brand-blue uppercase flex items-center gap-1"><Scale size={12}/> Calculateur d'Emballage</h4>
                    
-                   <div className="grid grid-cols-2 gap-3">
+                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                       <div>
                         <label className="block text-[10px] font-bold text-gray-500 dark:text-slate-400 mb-1">Format Unitaire (kg)</label>
                         <input
@@ -438,7 +438,7 @@ export const ConditionnementPage: React.FC = () => {
                    )}
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-[10px] font-bold text-gray-400 dark:text-slate-500 uppercase mb-1">Date d'emballage</label>
                     <input
@@ -512,7 +512,7 @@ export const ConditionnementPage: React.FC = () => {
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <span className="text-gray-400 dark:text-slate-500 font-bold block">Date</span>
                       <span className="font-semibold text-brand-text dark:text-white">{selectedLot.packagingDetails.date}</span>
@@ -527,7 +527,7 @@ export const ConditionnementPage: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-2 text-center bg-blue-50 rounded-xl p-3 border border-blue-100">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-center bg-blue-50 rounded-xl p-3 border border-blue-100">
                     <div>
                       <span className="text-[10px] text-brand-blue font-bold block uppercase">Nombre d'Unités</span>
                       <span className="text-lg font-extrabold text-brand-blue">{selectedLot.packagingDetails.quantity}</span>

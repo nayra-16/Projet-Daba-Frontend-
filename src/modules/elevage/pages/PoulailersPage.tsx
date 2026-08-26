@@ -225,7 +225,7 @@ export const PoulailersPage: React.FC = () => {
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-4 pt-2">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
                       <div>
                         <p className="text-xs text-gray-500">Capacité max</p>
                         <p className="font-bold text-sm text-brand-text">{poulailer.capacity.toLocaleString()} têtes</p>

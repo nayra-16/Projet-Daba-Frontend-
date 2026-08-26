@@ -30,7 +30,7 @@ export const ConditionnementStats: React.FC<ConditionnementStatsProps> = ({ cham
             <Snowflake className="text-brand-blue" size={20} />
           </div>
         </div>
-        <div className="mt-auto grid grid-cols-2 gap-x-2 gap-y-1.5 text-[11px] font-semibold">
+        <div className="mt-auto grid grid-cols-1 md:grid-cols-2 gap-x-2 gap-y-1.5 text-[11px] font-semibold">
           <div className="flex items-center gap-1 text-brand-green">
             <span className="w-1.5 h-1.5 rounded-full bg-brand-green"></span>
             Dispos: {chambres.filter(c => c.status === 'Disponible').length}

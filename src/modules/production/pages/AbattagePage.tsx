@@ -328,7 +328,7 @@ export const AbattagePage: React.FC = () => {
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-bold text-gray-500 dark:text-slate-400 uppercase mb-1">Volailles Reçues</label>
                   <input
@@ -448,7 +448,7 @@ export const AbattagePage: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   <div className="bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 p-3 rounded-lg text-center shadow-sm">
                     <Scale size={20} className="mx-auto text-gray-400 dark:text-slate-500 mb-1" />
                     <span className="text-[10px] text-gray-500 dark:text-slate-400 font-bold block uppercase">Poids Vif Initial</span>

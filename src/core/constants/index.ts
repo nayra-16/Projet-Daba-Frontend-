@@ -30,8 +30,6 @@ export const CONTACT_INFO = {
 };
 
 export const SOCIAL_LINKS = [
-  { name: 'Facebook', url: '#' },
-  { name: 'Twitter', url: '#' },
-  { name: 'Instagram', url: '#' },
-  { name: 'LinkedIn', url: '#' },
+  { name: 'Facebook', url: 'https://www.facebook.com/share/1EatBLBLf9/' },
+  { name: 'TikTok', url: 'https://vm.tiktok.com/ZS9BrWa2Y5psg-IuyeK/' },
 ];

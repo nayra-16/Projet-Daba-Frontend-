@@ -340,7 +340,7 @@ export const DecoupePage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-[10px] font-bold text-gray-400 dark:text-slate-500 uppercase mb-1">Date</label>
                   <input
@@ -367,7 +367,7 @@ export const DecoupePage: React.FC = () => {
               
               <div className="space-y-3 max-h-[300px] overflow-y-auto pr-1">
                 {pieceFields.map(({ key, label }) => (
-                  <div key={key} className="grid grid-cols-3 gap-2 items-center bg-gray-50 dark:bg-slate-800 p-2 rounded-lg">
+                  <div key={key} className="grid grid-cols-1 md:grid-cols-3 gap-2 items-center bg-gray-50 dark:bg-slate-800 p-2 rounded-lg">
                     <span className="text-xs font-bold text-gray-700 dark:text-slate-200 col-span-1">{label}</span>
                     <input
                       type="number"

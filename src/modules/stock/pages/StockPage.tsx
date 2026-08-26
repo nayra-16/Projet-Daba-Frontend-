@@ -866,7 +866,7 @@ export const StockPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               <div>
                 <label className="block text-sm font-bold text-slate-300 mb-1">
                   Quantité <span className="text-red-400">*</span>
@@ -962,7 +962,7 @@ export const StockPage: React.FC = () => {
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
               <label className="block text-sm font-bold text-slate-300 mb-1">Catégorie</label>
               <select
@@ -989,7 +989,7 @@ export const StockPage: React.FC = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
               <label className="block text-sm font-bold text-slate-300 mb-1">Prix unitaire (FCFA)</label>
               <input

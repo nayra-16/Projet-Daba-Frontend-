@@ -61,7 +61,7 @@ const CreateModal: React.FC<CreateModalProps> = ({ onClose, onSuccess }) => {
           <button onClick={onClose} className="text-gray-400 hover:text-gray-600 transition"><X size={20} /></button>
         </div>
         <form onSubmit={handleSubmit} className="p-5 space-y-4">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="col-span-2">
               <label className="block text-sm font-semibold text-gray-700 mb-1">Nom *</label>
               <input value={form.name} onChange={e => set('name', e.target.value)} required

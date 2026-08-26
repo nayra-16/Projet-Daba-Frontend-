@@ -519,7 +519,7 @@ export const FarmsPage: React.FC = () => {
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
               <label className="block text-sm font-bold text-gray-700 dark:text-slate-200 mb-1">Téléphone</label>
               <input
@@ -576,7 +576,7 @@ export const FarmsPage: React.FC = () => {
       >
         {viewingFarm && (
           <div className="space-y-6">
-            <div className="bg-gray-50 dark:bg-slate-800 p-4 rounded-2xl grid grid-cols-3 gap-3 border border-gray-100 dark:border-slate-800">
+            <div className="bg-gray-50 dark:bg-slate-800 p-4 rounded-2xl grid grid-cols-1 md:grid-cols-3 gap-3 border border-gray-100 dark:border-slate-800">
               <div>
                 <p className="text-xs text-gray-500 dark:text-slate-400 uppercase">Localisation</p>
                 <p className="font-bold text-brand-text dark:text-white text-sm">{viewingFarm.address || viewingFarm.location || '—'}</p>
@@ -598,7 +598,7 @@ export const FarmsPage: React.FC = () => {
               ) : farmPoulaillers.length === 0 ? (
                 <p className="text-gray-400 text-sm py-2">Aucun poulailler rattaché à cette ferme.</p>
               ) : (
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {farmPoulaillers.map((p) => (
                     <div key={p.id} className="p-3 border border-gray-200 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-900">
                       <p className="font-bold text-brand-text dark:text-white text-sm">{p.name}</p>

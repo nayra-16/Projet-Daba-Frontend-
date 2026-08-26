@@ -373,7 +373,7 @@ export const TransformationPage: React.FC = () => {
                 </select>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-[10px] font-bold text-gray-400 dark:text-slate-500 uppercase mb-1">Date</label>
                   <input
@@ -396,7 +396,7 @@ export const TransformationPage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-bold text-gray-500 dark:text-slate-400 uppercase mb-1">Quantité Produite</label>
                   <input
@@ -513,7 +513,7 @@ export const TransformationPage: React.FC = () => {
                    </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 text-xs mt-2">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs mt-2">
                   <div>
                     <span className="text-gray-400 dark:text-slate-500 font-bold block">Date</span>
                     <span className="font-semibold text-brand-text dark:text-white">{selectedLot.processingDetails.date}</span>

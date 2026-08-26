@@ -218,7 +218,7 @@ export const ProduitsFabriquesPage: React.FC = () => {
                   <p className="text-xs font-bold mt-1">PRODUIT CERTIFIÉ DABA ERP</p>
                 </div>
                 
-                <div className="grid grid-cols-2 gap-4 text-sm font-bold mt-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm font-bold mt-4">
                   <div>
                     <span className="block text-[10px] text-gray-500 dark:text-slate-400 uppercase">Code Lot</span>
                     <span className="text-lg font-mono">{selectedProductForLabel.lotNumber}</span>
@@ -229,7 +229,7 @@ export const ProduitsFabriquesPage: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 text-sm font-bold mt-2">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm font-bold mt-2">
                   <div>
                     <span className="block text-[10px] text-gray-500 dark:text-slate-400 uppercase">Lot Élevage Origine</span>
                     <span className="font-mono">{selectedProductForLabel.elevageLotNumber}</span>

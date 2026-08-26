@@ -41,7 +41,10 @@ const AdminContent: React.FC = () => {
     >
       <Sidebar />
       <div
-        className="flex flex-col flex-1 min-h-screen transition-all duration-300 lg:ml-[240px]"
+        className={cn(
+          "flex flex-col flex-1 min-h-screen transition-all duration-300",
+          sidebarCollapsed ? "lg:ml-16" : "lg:ml-[240px]"
+        )}
       >
         <Header />
         <main

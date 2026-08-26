@@ -289,7 +289,7 @@ export const AlimentationPage: React.FC = () => {
         }
       >
         <form id="feed-page-form" onSubmit={handleSubmit} className="space-y-4">
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-1">
                 Date <span className="text-brand-red">*</span>
@@ -318,7 +318,7 @@ export const AlimentationPage: React.FC = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-1">Type d'aliment</label>
               <select

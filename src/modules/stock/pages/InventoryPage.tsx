@@ -92,7 +92,7 @@ const CreateInventoryModal: React.FC<CreateModalProps> = ({ stocks, onClose, onS
             <input type="date" value={inventoryDate} onChange={e => setInventoryDate(e.target.value)} required
               className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-brand-green text-sm" />
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-1">Qté théorique *</label>
               <input type="number" min="0" value={theoreticalQty} onChange={e => setTheoreticalQty(e.target.value)} required

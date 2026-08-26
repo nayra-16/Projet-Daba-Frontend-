@@ -322,7 +322,7 @@ export const UsersList: React.FC = () => {
         }
       >
         <form id="user-form" onSubmit={submit} className="space-y-4">
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
               <label className="block text-sm font-bold text-slate-300 mb-1">
                 Prénom <span className="text-red-400">*</span>
@@ -375,7 +375,7 @@ export const UsersList: React.FC = () => {
               />
             </div>
           )}
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
               <label className="block text-sm font-bold text-slate-300 mb-1">Téléphone</label>
               <input

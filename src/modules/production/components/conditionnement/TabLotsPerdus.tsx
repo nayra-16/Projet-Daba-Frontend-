@@ -20,7 +20,7 @@ export const TabLotsPerdus: React.FC<TabLotsPerdusProps> = ({ lots }) => {
   }
 
   return (
-    <div className="bg-white dark:bg-slate-900 border border-red-100 dark:border-red-900/30 rounded-xl overflow-hidden shadow-sm">
+    <div className="bg-white dark:bg-slate-900 border border-red-100 dark:border-red-900/30 rounded-xl overflow-x-auto shadow-sm">
       <table className="w-full">
         <thead className="bg-red-50 dark:bg-red-900/20 border-b border-red-100 dark:border-red-900/30">
           <tr>
